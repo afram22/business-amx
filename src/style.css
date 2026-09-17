@@ -2095,8 +2095,89 @@ button, input, select, textarea {
   transform: translateY(-1px) !important;
 }
 
+/* ==========================================================
+   PHONE VIEW RESPONSIVE MODALS & DISH DETAILS COVER FIX
+   ========================================================== */
+.modal-overlay {
+  padding: 12px !important;
+}
+
+.modal-card {
+  width: 94% !important;
+  max-width: 440px !important;
+  max-height: 85vh !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
+  box-shadow: 0 20px 60px rgba(60, 7, 100, 0.4) !important;
+}
+
+.modal-card.modal-lg {
+  max-width: 440px !important;
+}
+
+.drawer-content {
+  max-width: 440px !important;
+  width: 100% !important;
+}
+
+.details-hero-box {
+  position: relative !important;
+  width: 100% !important;
+  height: 200px !important;
+  max-height: 220px !important;
+  border-radius: var(--radius-md) !important;
+  overflow: hidden !important;
+  margin-bottom: 14px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12) !important;
+  flex-shrink: 0 !important;
+}
+
+.details-cover-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: var(--radius-md) !important;
+  display: block !important;
+}
+
+.details-price-badge {
+  position: absolute !important;
+  bottom: 12px !important;
+  right: 12px !important;
+  background: linear-gradient(135deg, #7e22ce, #9333ea) !important;
+  color: #ffffff !important;
+  font-size: 1.1rem !important;
+  font-weight: 800 !important;
+  padding: 6px 14px !important;
+  border-radius: var(--radius-full) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+  font-family: var(--font-serif) !important;
+}
+
+/* CUSTOM SLIM SCROLLBARS FOR PHONE MODALS & DRAWERS */
+.modal-body::-webkit-scrollbar,
+.drawer-body::-webkit-scrollbar,
+.itemized-dishes-grid::-webkit-scrollbar {
+  width: 4px !important;
+}
+
+.modal-body::-webkit-scrollbar-thumb,
+.drawer-body::-webkit-scrollbar-thumb,
+.itemized-dishes-grid::-webkit-scrollbar-thumb {
+  background: rgba(126, 34, 206, 0.35) !important;
+  border-radius: 10px !important;
+}
+
+.modal-body::-webkit-scrollbar-track,
+.drawer-body::-webkit-scrollbar-track,
+.itemized-dishes-grid::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
 @media (max-width: 500px) {
   .phone-app-container { max-width: 100%; box-shadow: none; }
   .admin-dishes-list { grid-template-columns: 1fr !important; }
   .form-grid-2 { grid-template-columns: 1fr; }
+  .modal-card { width: 96% !important; max-height: 88vh !important; }
+  .details-hero-box { height: 180px !important; }
 }
