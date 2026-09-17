@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purple Martini | Owner Admin & Inventory Portal</title>
+  <meta name="description" content="Premium owner admin portal for Purple Martini Lounge: Manage menu inventory, dish availability, full macros table, and today's deals & happy hour promotions.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body class="admin-dashboard-body purple-white-theme">
+
+  <!-- DASHBOARD NAVBAR -->
+  <header class="navbar admin-navbar glass-sticky">
+    <div class="nav-container">
+      <div class="brand-group">
+        <img src="./logo.png" alt="Purple Martini Logo" class="admin-brand-logo-img">
+        <div>
+          <h1 class="brand-name">Purple Martini</h1>
+          <span class="brand-tagline">Owner Admin & Inventory Hub</span>
+        </div>
+      </div>
+
+      <div class="nav-controls">
+        <a href="./index.html" class="btn-icon-label" target="_blank">
+          🌐 View Customer Menu ↗
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ADMIN HERO STATS STRIP -->
+  <section class="admin-stats-strip">
+    <div class="admin-stats-container">
+      <div class="stat-card">
+        <div class="stat-icon purple">🍽️</div>
+        <div class="stat-info">
+          <span class="stat-label">Total Menu Items</span>
+          <strong class="stat-value" id="stat-total-dishes">0</strong>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon green">✅</div>
+        <div class="stat-info">
+          <span class="stat-label">In Stock Items</span>
+          <strong class="stat-value" id="stat-instock-dishes">0</strong>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon red">⚠️</div>
+        <div class="stat-info">
+          <span class="stat-label">Out of Stock</span>
+          <strong class="stat-value" id="stat-outstock-dishes">0</strong>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon gold">🔥</div>
+        <div class="stat-info">
+          <span class="stat-label">Active Promotion</span>
+          <strong class="stat-value" id="stat-deals-status">HAPPY20</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMIN TABS NAVBAR -->
+  <nav class="admin-tabs-nav">
+    <div class="admin-tabs-container">
+      <button class="admin-tab-btn active" data-tab="menu">
+        🍽️ Menu & Dish Inventory Manager
+      </button>
+      <button class="admin-tab-btn" data-tab="deals">
+        🔥 Today's Deals & Happy Hour
+      </button>
+    </div>
+  </nav>
+
+  <main class="admin-main">
+    
+    <!-- TAB 1: MENU & INVENTORY MANAGER -->
+    <section id="tab-menu" class="admin-tab-content">
+      <div class="tab-header-card glass-card flex-between">
+        <div>
+          <h2>🍽️ Menu & Dish Inventory Manager</h2>
+          <p class="a11y-sub">Manage dish details, prices, complete macros, images, and live stock availability.</p>
+        </div>
+        <button id="btn-admin-add-dish" class="btn-primary btn-gold-glow">+ Add New Dish</button>
+      </div>
+
+      <div class="admin-filter-bar">
+        <div class="admin-search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="admin-search-dish" placeholder="Search menu dishes by name or description...">
+        </div>
+        <div class="chip-group" id="admin-category-chips">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+      <div class="admin-table-card glass-card">
+        <div id="admin-dishes-list" class="admin-dishes-list">
+          <!-- Dish items list injected via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: TODAY'S DEALS & HAPPY HOUR MANAGER -->
+    <section id="tab-deals" class="admin-tab-content hidden">
+      <div class="admin-card-box glass-card">
+        <h2>🔥 Today's Deals & Happy Hour Promotions Manager</h2>
+        <p class="a11y-sub m-b-20">Edit the live promotion banner that appears at the top of the customer menu.</p>
+
+        <!-- LIVE BANNER PREVIEW BOX -->
+        <div class="deal-preview-container m-b-20">
+          <span class="preview-title-lbl">👁️ Live Customer Banner Preview:</span>
+          <div class="air-happy-hour-strip glass-happy-strip m-t-10">
+            <div class="strip-container">
+              <span class="strip-badge" id="preview-deal-tag">🔥 SUNSET HAPPY HOUR</span>
+              <span class="strip-text" id="preview-deal-text">Get 20% OFF on all Cocktails & Tapas! Code: <strong class="code-box" id="preview-deal-code">HAPPY20</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <form id="form-deals-config">
+          <div class="form-group">
+            <label>Promotion Tag / Badge Title</label>
+            <input type="text" id="deal-tag-input" placeholder="e.g., 🔥 SUNSET HAPPY HOUR" required>
+          </div>
+
+          <div class="form-group">
+            <label>Banner Promo Description</label>
+            <input type="text" id="deal-desc-input" placeholder="e.g., Get 20% OFF on all Cocktails & Tapas!" required>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Promo Discount Code</label>
+              <input type="text" id="deal-code-input" placeholder="e.g., HAPPY20" required>
+            </div>
+            <div class="form-group">
+              <label>Discount Percentage (%)</label>
+              <input type="number" id="deal-percent-input" min="0" max="100" placeholder="20" required>
+            </div>
+          </div>
+
+          <div class="form-group m-t-10">
+            <label class="chk-label"><input type="checkbox" id="deal-active-input" checked> ✅ Enable & Show Deal Banner on Customer Menu</label>
+          </div>
+
+          <button type="submit" class="btn-primary btn-lg m-t-10">Save & Publish Deal Banner</button>
+        </form>
+
+        <div id="deals-config-msg" class="promo-message hidden m-t-10"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- OWNER EDIT / ADD DISH MODAL -->
+  <div id="modal-owner-edit" class="modal-overlay hidden">
+    <div class="modal-card modal-lg glass-modal">
+      <div class="modal-header">
+        <h3 id="modal-owner-edit-title">✏️ Edit Dish</h3>
+        <button class="btn-close" id="btn-close-owner-edit">✕</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-owner-edit">
+          <input type="hidden" id="edit-dish-id">
+          
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Dish Name (English)</label>
+              <input type="text" id="edit-dish-name-en" required>
+            </div>
+            <div class="form-group">
+              <label>Dish Name (Hindi)</label>
+              <input type="text" id="edit-dish-name-hi">
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Category</label>
+              <select id="edit-dish-category" class="styled-select w-full">
+                <option value="starters">Starters & Tapas</option>
+                <option value="pizzas">Woodfired Pizzas</option>
+                <option value="mains">Signature Mains</option>
+                <option value="sliders">Burgers & Tacos</option>
+                <option value="desserts">Desserts</option>
+                <option value="beverages">Lounge Cocktails</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Price (₹ INR)</label>
+              <input type="number" id="edit-dish-price" min="0" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Description (English)</label>
+            <textarea id="edit-dish-desc-en" rows="2" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Image URL</label>
+            <input type="url" id="edit-dish-image" placeholder="https://images.unsplash.com/..." required>
+          </div>
+
+          <!-- MACROS EDIT TABLE -->
+          <div class="macros-edit-grid">
+            <div class="form-group">
+              <label>Calories (kcal)</label>
+              <input type="number" id="edit-dish-cal" min="0" required>
+            </div>
+            <div class="form-group">
+              <label>Protein (g)</label>
+              <input type="number" id="edit-dish-protein" min="0" required>
+            </div>
+            <div class="form-group">
+              <label>Carbs (g)</label>
+              <input type="number" id="edit-dish-carbs" min="0" required>
+            </div>
+            <div class="form-group">
+              <label>Fats (g)</label>
+              <input type="number" id="edit-dish-fats" min="0" required>
+            </div>
+            <div class="form-group">
+              <label>Fiber (g)</label>
+              <input type="number" id="edit-dish-fiber" min="0" required>
+            </div>
+            <div class="form-group">
+              <label>Sodium (mg)</label>
+              <input type="number" id="edit-dish-sodium" min="0" required>
+            </div>
+          </div>
+
+          <div class="dietary-checkboxes-grid">
+            <label class="chk-label"><input type="checkbox" id="edit-dish-isveg"> 🌱 Veg</label>
+            <label class="chk-label"><input type="checkbox" id="edit-dish-isnonveg"> 🍗 Non-Veg</label>
+            <label class="chk-label"><input type="checkbox" id="edit-dish-isjain"> 🛕 Jain</label>
+            <label class="chk-label"><input type="checkbox" id="edit-dish-isgf"> 🌾 Gluten-Free</label>
+            <label class="chk-label"><input type="checkbox" id="edit-dish-isprotein"> 💪 High Protein</label>
+            <label class="chk-label"><input type="checkbox" id="edit-dish-isavailable" checked> ✅ In Stock / Available</label>
+          </div>
+
+          <div class="modal-footer flex-between">
+            <button type="button" id="btn-admin-delete-dish" class="btn-danger-sm">🗑️ Delete Dish</button>
+            <button type="submit" class="btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./src/adminApp.js"></script>
+</body>
+</html>

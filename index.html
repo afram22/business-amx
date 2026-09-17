@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-font-size="normal">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Purple Martini Anjuna Goa | Digital Menu & Bar</title>
+  <meta name="description" content="Explore Purple Martini's seaside lounge digital menu in Anjuna Goa with dish macros table, 9-language translations, veg-only filter, accessibility suite, glassmorphism design, and Google reviews.">
+  
+  <!-- Premium Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body class="purple-white-theme glass-theme">
+
+  <!-- PHONE CONTAINER WRAPPER -->
+  <div class="phone-app-container">
+
+    <!-- TOP ACCESSIBILITY, SPLIT BILL & LANGUAGE HEADER BAR -->
+    <div class="top-util-header">
+      <div class="top-util-container">
+        <button id="btn-a11y-top" class="util-header-btn purple" title="Accessibility Suite">
+          ♿ Accessibility
+        </button>
+        <button id="btn-split-top" class="util-header-btn gold" title="Split Bill Calculator">
+          🧮 Split Bill
+        </button>
+        <button id="btn-lang-top" class="util-header-btn white" title="Choose Language">
+          🌐 <span id="current-lang-label">English</span> ▾
+        </button>
+      </div>
+    </div>
+
+    <!-- AIRMENUS TOP OUTLET HEADER BANNER -->
+    <header class="air-header">
+      <div class="air-cover-banner">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" alt="Purple Martini Goa Sunset Cover" class="air-cover-img">
+        <div class="air-cover-gradient"></div>
+      </div>
+
+      <div class="air-outlet-info-card glass-card">
+        <div class="air-outlet-brand">
+          <img src="./logo.png" alt="Purple Martini Logo" class="brand-logo-img">
+          <div class="air-brand-text">
+            <h1 class="air-outlet-name">Purple Martini</h1>
+            <p class="air-outlet-tagline">Seaside Lounge & Restobar • Anjuna Goa</p>
+          </div>
+        </div>
+
+        <div class="air-outlet-meta-row">
+          <span class="air-badge-dinein">🍽️ Dine-In • Table #07</span>
+          <span class="air-badge-status"><span class="dot-green"></span> Open Now</span>
+          <span class="air-badge-time">🕒 11 AM - 1 AM</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- STICKY CONTROL & FILTER TOOLBAR -->
+    <div class="air-sticky-bar glass-sticky">
+      <div class="air-toolbar-container">
+        
+        <!-- Search Box & Veg Only Switch Row -->
+        <div class="air-search-veg-row">
+          <div class="air-search-wrapper">
+            <span class="air-search-icon">🔍</span>
+            <input type="text" id="input-search" placeholder="Search dishes, drinks, macros..." autocomplete="off">
+            <button id="btn-clear-search" class="air-clear-btn hidden">✕</button>
+          </div>
+
+          <label class="air-veg-toggle" title="Filter vegetarian dishes only">
+            <input type="checkbox" id="chk-veg-only">
+            <span class="veg-toggle-slider"></span>
+            <span class="veg-toggle-label">🌱 Veg Only</span>
+          </label>
+        </div>
+
+        <!-- Quick Controls Row (Price Chips, Dietary Chips) -->
+        <div class="air-sub-controls-row">
+          <!-- Price Range Filter Chips -->
+          <div class="air-price-chips">
+            <button class="air-chip active" data-price="all">All Prices</button>
+            <button class="air-chip" data-price="500">Under ₹500</button>
+            <button class="air-chip" data-price="750">Under ₹750</button>
+            <button class="air-chip" data-price="1000">Under ₹1000</button>
+          </div>
+
+          <!-- Dietary Chips -->
+          <div class="air-diet-chips">
+            <button class="air-chip" data-diet="veg">🌱 Veg</button>
+            <button class="air-chip" data-diet="nonveg">🍗 Non-Veg</button>
+            <button class="air-chip" data-diet="jain">🛕 Jain</button>
+            <button class="air-chip" data-diet="glutenFree">🌾 GF</button>
+            <button class="air-chip" data-diet="highProtein">💪 High Protein</button>
+          </div>
+        </div>
+
+        <!-- CATEGORY HORIZONTAL SCROLL PILLS -->
+        <nav class="air-category-pills" id="category-tabs-container">
+          <!-- Injected via JavaScript -->
+        </nav>
+
+      </div>
+    </div>
+
+    <!-- HAPPY HOUR PROMO BANNER (EDITABLE BY OWNER IN ADMIN) -->
+    <section class="air-happy-hour-strip glass-happy-strip" id="deal-banner-section">
+      <div class="strip-container">
+        <span class="strip-badge" id="deal-banner-tag">🔥 SUNSET HAPPY HOUR</span>
+        <span class="strip-text" id="deal-banner-text">Get 20% OFF on all Cocktails & Tapas! Code: <strong class="code-box" id="deal-banner-code">HAPPY20</strong></span>
+      </div>
+    </section>
+
+    <!-- MAIN MENU DISHES LIST CONTAINER -->
+    <main class="air-main-content">
+      <div class="air-menu-container">
+        
+        <div id="menu-grid" class="air-dishes-list">
+          <!-- Dish cards rendered dynamically via app.js -->
+        </div>
+
+        <!-- EMPTY STATE -->
+        <div id="empty-state" class="air-empty-card hidden">
+          <div class="empty-icon">🍽️</div>
+          <h3>No dishes matched your filter</h3>
+          <p>Try resetting the search or dietary filters.</p>
+          <button id="btn-empty-reset" class="btn-primary m-t-10">Reset Filters</button>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- FOOTER WITH INSTAGRAM, GOOGLE REVIEWS & OWNER ADMIN LINK -->
+    <footer class="air-footer glass-footer">
+      <div class="air-footer-content">
+        <p>© 2026 Purple Martini Seaside Lounge • Anjuna Beach, Goa</p>
+        
+        <div class="footer-social-links m-t-10">
+          <a href="https://www.instagram.com/purplemartinigoa?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" class="footer-btn instagram" title="Follow Purple Martini on Instagram">
+            📸 Instagram: @purplemartinigoa
+          </a>
+          <a href="https://www.google.com/search?sca_esv=8f55d1c39308862b&sxsrfa=APpeQntiItklO4arX1gV7uA5VaUcabU75A:1789663553678&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_zFmP8yJv9KD2LxYeJWKiRodn9FIyzSnweXGCVQKFXkTDfiRZFs9crco1XjGCklFHrmgcBpWyB5Cr-djgril6Fdh9bGK&q=Purple+Martini+Reviews&sa=X&ved=2ahUKEwjMnYmjiPaWAxX5m-EIHdoIJwQQ0bkNegQIOhAH&biw=1280&bih=609&dpr=1.5" target="_blank" class="footer-btn google-review" title="Write a Google Review for Purple Martini">
+            ⭐ Write a Review on Google
+          </a>
+        </div>
+
+        <div class="m-t-10">
+          <a href="./admin.html" class="air-admin-link">👑 Owner Admin Portal ↗</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- STICKY FLOATING BOTTOM ORDER BAR -->
+    <div id="air-bottom-bar" class="air-bottom-order-bar floating-glass-bar hidden">
+      <div class="air-bottom-bar-content">
+        <div class="cart-left-pill">
+          <span id="air-cart-items-count" class="cart-items-badge">0 ITEMS</span>
+          <div class="cart-total-group">
+            <span class="cart-total-label">Total</span>
+            <strong id="air-cart-total-price" class="cart-total-val">₹0</strong>
+          </div>
+        </div>
+        <button id="btn-cart-toggle" class="btn-checkout-glow">
+          <span>View Order</span>
+          <span class="btn-arrow">🛒</span>
+        </button>
+      </div>
+    </div>
+
+  </div> <!-- END PHONE CONTAINER WRAPPER -->
+
+  <!-- FULL DISH INFORMATION MODAL -->
+  <div id="modal-dish-details" class="modal-overlay hidden">
+    <div class="modal-card modal-lg glass-modal">
+      <div class="modal-header">
+        <div>
+          <h3 id="details-dish-name">Dish Information</h3>
+          <span id="details-dish-category" class="category-pill-sm">Category</span>
+        </div>
+        <button class="btn-close" id="btn-close-details">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="details-hero-box">
+          <img id="details-dish-img" src="" alt="Dish Image" class="details-cover-img">
+          <div class="details-price-badge" id="details-dish-price">₹0</div>
+        </div>
+
+        <div class="details-content-card">
+          <div class="flex-between m-b-20">
+            <span id="details-diet-badge" class="air-badge-dinein">🌱 Vegetarian</span>
+            <button id="btn-details-audio" class="btn-audio-speak">🔊 Listen to Description</button>
+          </div>
+
+          <h4 class="details-section-heading">Description</h4>
+          <p id="details-dish-desc" class="details-desc-text"></p>
+
+          <h4 class="details-section-heading m-t-20">📊 Complete Nutritional Table</h4>
+          <div class="macros-table-wrapper">
+            <table class="nutrition-table">
+              <thead>
+                <tr>
+                  <th>Nutrient</th>
+                  <th>Amount</th>
+                  <th>DV %</th>
+                </tr>
+              </thead>
+              <tbody id="details-macros-tbody">
+              </tbody>
+            </table>
+          </div>
+
+          <!-- WRITE YOUR RATINGS & REVIEWS SECTION -->
+          <div class="details-reviews-box m-t-20">
+            <div class="flex-between">
+              <h4 class="details-section-heading">★ Ratings & Customer Reviews</h4>
+              <button id="btn-open-rating-form" class="btn-primary btn-sm">✍️ Write Your Rating</button>
+            </div>
+            
+            <div id="details-reviews-list" class="m-t-10">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE LANGUAGE SELECTOR MODAL -->
+  <div id="modal-language" class="modal-overlay hidden">
+    <div class="modal-card glass-modal">
+      <div class="modal-header">
+        <div>
+          <h3>🌐 Choose Your Language</h3>
+          <p class="a11y-sub">Select your preferred language for menu titles & descriptions</p>
+        </div>
+        <button class="btn-close" id="btn-close-lang">✕</button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="lang-picker-grid">
+          <button class="lang-card-btn active" data-lang-code="en">
+            <span class="flag-icon">🇬🇧</span>
+            <span class="lang-title">English</span>
+          </button>
+          <button class="lang-card-btn" data-lang-code="hi">
+            <span class="flag-icon">🇮🇳</span>
+            <span class="lang-title">हिंदी (Hindi)</span>
+          </button>
+          <button class="lang-card-btn" data-lang-code="pa">
+            <span class="flag-icon">🇵🇧</span>
+            <span class="lang-title">ਪੰਜਾਬੀ (Punjabi)</span>
+          </button>
+          <button class="lang-card-btn" data-lang-code="ru">
+            <span class="flag-icon">🇷🇺</span>
+            <span class="lang-title">Русский (Russian)</span>
+          </button>
+          <button class="lang-card-btn" data-lang-code="mr">
+            <span class="flag-icon">🚩</span>
+            <span class="lang-title">मराठी (Marathi)</span>
+          </button>
+          <button class="lang-card-btn" data-lang-code="kn">
+            <span class="flag-icon">🇮🇳</span>
+            <span class="lang-title">ಕನ್ನಡ (Kannada)</span>
+          </button>
+          <button class="lang-card-btn" data-lang-code="ml">
+            <span class="flag-icon">🌴</span>
+            <span class="lang-title">മലയാളം (Malayalam)</span>
+          </button>
+          <button class="lang-card-btn" data-lang-code="de">
+            <span class="flag-icon">🇩🇪</span>
+            <span class="lang-title">Deutsch (German)</span>
+          </button>
+          <button class="lang-card-btn" data-lang-code="pt">
+            <span class="flag-icon">🇵🇹</span>
+            <span class="lang-title">Português</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETE NUTRITIONAL MACROS TABLE MODAL -->
+  <div id="modal-macros" class="modal-overlay hidden">
+    <div class="modal-card glass-modal">
+      <div class="modal-header">
+        <div>
+          <h3 id="macros-dish-title">📊 Full Nutritional Table</h3>
+          <p class="a11y-sub" id="macros-dish-category">Complete dietary breakdown per serving</p>
+        </div>
+        <button class="btn-close" id="btn-close-macros">✕</button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="macros-table-wrapper">
+          <table class="nutrition-table">
+            <thead>
+              <tr>
+                <th>Nutrient Metric</th>
+                <th>Amount</th>
+                <th>Daily Value %</th>
+              </tr>
+            </thead>
+            <tbody id="macros-table-body">
+            </tbody>
+          </table>
+        </div>
+
+        <div class="macros-badges-grid m-t-20" id="macros-dietary-badges">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPGRADED GLASS ACCESSIBILITY DRAWER -->
+  <div id="drawer-a11y" class="drawer-overlay hidden">
+    <div class="drawer-content drawer-right glass-drawer">
+      <div class="drawer-header">
+        <div>
+          <h3 id="txt-a11y-title">♿ Accessibility Suite</h3>
+          <p class="a11y-sub">Personalize font scaling, contrast & legibility</p>
+        </div>
+        <button class="btn-close" id="btn-close-a11y">✕</button>
+      </div>
+      <div class="drawer-body">
+        
+        <!-- Font Size Scaling Card -->
+        <div class="a11y-card">
+          <div class="a11y-card-header">
+            <div class="a11y-icon-box">🔤</div>
+            <div>
+              <span class="a11y-title-text" id="txt-font-size">Font Size Scaling</span>
+              <p class="a11y-desc-text">Adjust text size across the digital menu</p>
+            </div>
+          </div>
+          <div class="a11y-font-picker">
+            <button class="btn-size-chip active" data-size="normal" id="btn-font-normal">Normal</button>
+            <button class="btn-size-chip" data-size="large" id="btn-font-large">Large (+15%)</button>
+            <button class="btn-size-chip" data-size="xl" id="btn-font-xl">Extra Large (+30%)</button>
+          </div>
+        </div>
+
+        <!-- High Contrast Card -->
+        <div class="a11y-card flex-between">
+          <div class="a11y-card-header">
+            <div class="a11y-icon-box">🌗</div>
+            <div>
+              <span class="a11y-title-text" id="txt-high-contrast">High Contrast Mode</span>
+              <p class="a11y-desc-text">Enhance visual contrast & text legibility</p>
+            </div>
+          </div>
+          <label class="a11y-toggle-wrapper">
+            <input type="checkbox" id="chk-high-contrast">
+            <span class="a11y-toggle-slider"></span>
+          </label>
+        </div>
+
+        <!-- Dyslexic Font Card -->
+        <div class="a11y-card flex-between">
+          <div class="a11y-card-header">
+            <div class="a11y-icon-box">📖</div>
+            <div>
+              <span class="a11y-title-text" id="txt-dyslexic-font">Dyslexic Friendly Font</span>
+              <p class="a11y-desc-text">Special spacing & letter weighting</p>
+            </div>
+          </div>
+          <label class="a11y-toggle-wrapper">
+            <input type="checkbox" id="chk-dyslexic">
+            <span class="a11y-toggle-slider"></span>
+          </label>
+        </div>
+
+        <!-- Reduce Motion Card -->
+        <div class="a11y-card flex-between">
+          <div class="a11y-card-header">
+            <div class="a11y-icon-box">⚡</div>
+            <div>
+              <span class="a11y-title-text" id="txt-reduced-motion">Reduce Motion & Animations</span>
+              <p class="a11y-desc-text">Minimize screen transitions & effects</p>
+            </div>
+          </div>
+          <label class="a11y-toggle-wrapper">
+            <input type="checkbox" id="chk-reduced-motion">
+            <span class="a11y-toggle-slider"></span>
+          </label>
+        </div>
+
+        <!-- Colorblind Indicators Card -->
+        <div class="a11y-card flex-between">
+          <div class="a11y-card-header">
+            <div class="a11y-icon-box">🎨</div>
+            <div>
+              <span class="a11y-title-text">Colorblind Friendly Indicators</span>
+              <p class="a11y-desc-text">High-contrast dietary icons & text tags</p>
+            </div>
+          </div>
+          <label class="a11y-toggle-wrapper">
+            <input type="checkbox" id="chk-colorblind">
+            <span class="a11y-toggle-slider"></span>
+          </label>
+        </div>
+
+        <button id="btn-reset-a11y" class="btn-reset-a11y-glass w-full m-t-20">
+          🔄 Reset Accessibility Defaults
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDER SUMMARY DRAWER -->
+  <div id="drawer-cart" class="drawer-overlay hidden">
+    <div class="drawer-content drawer-right glass-drawer">
+      <div class="drawer-header">
+        <h3 id="txt-your-order">🛒 Your Order Summary</h3>
+        <div class="cart-header-actions">
+          <button id="btn-clear-cart" class="btn-clear-cart">🗑️ Clear</button>
+          <button class="btn-close" id="btn-close-cart">✕</button>
+        </div>
+      </div>
+      <div class="drawer-body">
+        <div id="cart-items-container" class="cart-items-list">
+        </div>
+
+        <div class="promo-wrapper">
+          <div class="flex-between">
+            <label class="promo-label" id="txt-apply-promo">Apply Promo Code</label>
+            <div class="quick-promo-tags">
+              <span class="promo-tag-chip" onclick="window.quickApplyPromo('HAPPY20')">🔥 HAPPY20</span>
+              <span class="promo-tag-chip" onclick="window.quickApplyPromo('PURPLE20')">🍸 PURPLE20</span>
+            </div>
+          </div>
+          <div class="promo-input-group m-t-10">
+            <input type="text" id="input-promo" placeholder="Enter code (HAPPY20)" uppercase>
+            <button id="btn-apply-promo" class="btn-primary btn-sm">Apply Code</button>
+          </div>
+          <div id="promo-message" class="promo-message hidden"></div>
+        </div>
+
+        <div class="notes-wrapper">
+          <label class="notes-label" id="txt-special-notes">Special Instructions</label>
+          <textarea id="input-special-notes" placeholder="e.g., Extra crispy, non-spicy..." rows="2"></textarea>
+        </div>
+
+        <div class="bill-summary glass-card-sm">
+          <div class="bill-row">
+            <span id="txt-subtotal">Subtotal</span>
+            <span id="bill-subtotal">₹0</span>
+          </div>
+          <div class="bill-row">
+            <span id="txt-tax-gst">GST & Service Charge (10%)</span>
+            <span id="bill-tax">₹0</span>
+          </div>
+          <div class="bill-row discount-row hidden" id="row-discount">
+            <span id="txt-discount">Promo Discount</span>
+            <span id="bill-discount">-₹0</span>
+          </div>
+          <hr class="bill-divider">
+          <div class="bill-row total-row">
+            <span id="txt-total-amount">Total Bill Amount</span>
+            <strong id="bill-total">₹0</strong>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEWS & WRITE YOUR RATING MODAL -->
+  <div id="modal-reviews" class="modal-overlay hidden">
+    <div class="modal-card glass-modal">
+      <div class="modal-header">
+        <div>
+          <h3 id="reviews-dish-title">Customer Ratings & Reviews</h3>
+          <div class="modal-rating-badge" id="reviews-dish-badge">★ 4.8</div>
+        </div>
+        <button class="btn-close" id="btn-close-reviews">✕</button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="reviews-list-container" id="reviews-list">
+        </div>
+
+        <form id="form-add-review" class="review-form m-t-20">
+          <h4 class="form-title" id="txt-write-review">✍️ Write Your Rating & Experience</h4>
+          
+          <div class="form-group">
+            <label id="txt-customer-name">Your Name</label>
+            <input type="text" id="input-review-name" placeholder="e.g., Rohan Sharma" required>
+          </div>
+
+          <div class="form-group">
+            <label id="txt-rating-stars">Select Rating Stars</label>
+            <div class="star-rating-picker" id="star-picker">
+              <span class="star-opt" data-val="1">★</span>
+              <span class="star-opt" data-val="2">★</span>
+              <span class="star-opt" data-val="3">★</span>
+              <span class="star-opt" data-val="4">★</span>
+              <span class="star-opt active" data-val="5">★</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label id="txt-review-comment">Your Review Comment</label>
+            <textarea id="input-review-text" rows="3" placeholder="Tell us about the flavor, presentation, or service..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary w-full" id="txt-submit-review">Submit Your Rating</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPLIT BILL CALCULATOR MODAL -->
+  <div id="modal-split-bill" class="modal-overlay hidden">
+    <div class="modal-card modal-lg glass-modal">
+      <div class="modal-header">
+        <div>
+          <h3 id="txt-split-title">🧮 Executive Split Bill Suite</h3>
+          <p class="a11y-sub">Split fairly per person or assign exact dishes per diner</p>
+        </div>
+        <button class="btn-close" id="btn-close-split">✕</button>
+      </div>
+
+      <div class="modal-body">
+        
+        <!-- SPLIT MODE TABS -->
+        <div class="split-mode-nav">
+          <button class="split-tab-btn active" id="tab-btn-equal" data-mode="equal">👥 Equal Split</button>
+          <button class="split-tab-btn" id="tab-btn-itemized" data-mode="itemized">🍕 Itemized Dish Split</button>
+        </div>
+
+        <!-- MODE 1: EQUAL SPLIT -->
+        <div id="split-mode-equal" class="split-section-view">
+          <div class="split-diners-box">
+            <div id="diner-avatars-row" class="diner-avatars-row">👥👥</div>
+            <label id="txt-num-diners" style="font-weight:700; color:var(--purple-dark-text);">Number of Diners</label>
+            <div class="counter-input">
+              <button class="btn-counter" id="btn-diners-minus">-</button>
+              <span class="counter-value" id="val-num-diners">2</span>
+              <button class="btn-counter" id="btn-diners-plus">+</button>
+            </div>
+          </div>
+
+          <div class="tip-selection-box">
+            <span class="tip-label">Staff Tip Contribution:</span>
+            <div class="tip-chips-grid">
+              <button class="tip-chip active" data-tip="0">No Tip</button>
+              <button class="tip-chip" data-tip="5">5%</button>
+              <button class="tip-chip" data-tip="10">10%</button>
+              <button class="tip-chip" data-tip="15">15%</button>
+              <button class="tip-chip" data-tip="20">20%</button>
+            </div>
+          </div>
+          
+          <div class="split-receipt-card">
+            <div class="receipt-header-strip">
+              <span>PURPLE MARTINI ANJUNA</span>
+              <span>DIGITAL RECEIPT</span>
+            </div>
+            
+            <div class="receipt-hero-amount">
+              <span class="share-title" id="txt-per-person-share">EQUALLY SPLIT SHARE</span>
+              <div class="share-amount" id="val-equal-share">₹0</div>
+              <span class="share-per-lbl">Per Diner Share</span>
+            </div>
+            
+            <div class="receipt-tear-line"></div>
+
+            <div class="split-details-rows">
+              <div class="bill-row">
+                <span>Food & Drinks Share</span>
+                <span id="split-base-person">₹0</span>
+              </div>
+              <div class="bill-row">
+                <span>Taxes & Service Charge (10%)</span>
+                <span id="split-tax-person">₹0</span>
+              </div>
+              <div class="bill-row" id="split-tip-row">
+                <span>Staff Tip Share</span>
+                <span id="split-tip-person">₹0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODE 2: ITEMIZED DISH SPLIT -->
+        <div id="split-mode-itemized" class="split-section-view hidden">
+          <div class="itemized-instructions">
+            <p style="font-size:0.8rem; color:var(--purple-dark-text); font-weight:600;">Tap items to assign them to specific Diners:</p>
+          </div>
+          
+          <div id="itemized-dishes-list" class="itemized-dishes-grid m-t-10">
+            <!-- Dynamically populated via app.js -->
+          </div>
+
+          <div id="itemized-summary-box" class="split-receipt-card m-t-10">
+            <div id="itemized-breakdown-output"></div>
+          </div>
+        </div>
+
+        <div class="split-action-buttons m-t-20">
+          <button id="btn-copy-receipt" class="btn-primary w-full">📋 Copy Formatted Receipt</button>
+          <button id="btn-share-whatsapp" class="btn-secondary w-full m-t-10">📲 Share via WhatsApp</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
