@@ -2123,8 +2123,9 @@ button, input, select, textarea {
 .details-hero-box {
   position: relative !important;
   width: 100% !important;
-  height: 145px !important;
-  max-height: 155px !important;
+  height: 120px !important;
+  max-height: 125px !important;
+  min-height: 115px !important;
   border-radius: var(--radius-md) !important;
   overflow: hidden !important;
   margin-bottom: 12px !important;
@@ -2132,9 +2133,11 @@ button, input, select, textarea {
   flex-shrink: 0 !important;
 }
 
+#details-dish-img,
 .details-cover-img {
   width: 100% !important;
   height: 100% !important;
+  max-height: 125px !important;
   object-fit: cover !important;
   border-radius: var(--radius-md) !important;
   display: block !important;
@@ -2298,8 +2301,9 @@ button, input, select, textarea {
     gap: 10px !important;
   }
 
-  .details-hero-box {
-    height: 140px !important;
+  .details-hero-box, #details-dish-img, .details-cover-img {
+    height: 120px !important;
+    max-height: 120px !important;
   }
 }
 
@@ -2336,7 +2340,8 @@ button, input, select, textarea {
     border-radius: 20px !important;
   }
 
-  .details-hero-box {
-    height: 130px !important;
+  .details-hero-box, #details-dish-img, .details-cover-img {
+    height: 115px !important;
+    max-height: 115px !important;
   }
 }
