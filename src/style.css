@@ -2123,11 +2123,11 @@ button, input, select, textarea {
 .details-hero-box {
   position: relative !important;
   width: 100% !important;
-  height: 200px !important;
-  max-height: 220px !important;
+  height: 145px !important;
+  max-height: 155px !important;
   border-radius: var(--radius-md) !important;
   overflow: hidden !important;
-  margin-bottom: 14px !important;
+  margin-bottom: 12px !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12) !important;
   flex-shrink: 0 !important;
 }
@@ -2142,16 +2142,35 @@ button, input, select, textarea {
 
 .details-price-badge {
   position: absolute !important;
-  bottom: 12px !important;
-  right: 12px !important;
+  bottom: 10px !important;
+  right: 10px !important;
   background: linear-gradient(135deg, #7e22ce, #9333ea) !important;
   color: #ffffff !important;
-  font-size: 1.1rem !important;
+  font-size: 1rem !important;
   font-weight: 800 !important;
-  padding: 6px 14px !important;
+  padding: 5px 12px !important;
   border-radius: var(--radius-full) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
   font-family: var(--font-serif) !important;
+}
+
+/* COMPACT DISH CARD THUMBNAILS FOR CLEANER LIST VIEWS */
+.air-dish-img {
+  width: 80px !important;
+  height: 75px !important;
+  object-fit: cover !important;
+  border-radius: var(--radius-md) !important;
+  border: 1px solid var(--border-light) !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08) !important;
+}
+
+.admin-dish-thumb {
+  width: 65px !important;
+  height: 65px !important;
+  object-fit: cover !important;
+  border-radius: var(--radius-md) !important;
+  border: 1px solid var(--border-light) !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* CUSTOM SLIM SCROLLBARS FOR PHONE MODALS & DRAWERS */
@@ -2174,10 +2193,89 @@ button, input, select, textarea {
   background: transparent !important;
 }
 
+/* RESPONSIVE OWNER ADMIN PORTAL (COMPUTER & MOBILE PHONE VIEWS) */
+@media (max-width: 768px) {
+  .admin-navbar {
+    padding: 10px 14px !important;
+  }
+  
+  .nav-container {
+    flex-direction: column !important;
+    gap: 8px !important;
+    align-items: flex-start !important;
+  }
+
+  .admin-stats-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .stat-card {
+    padding: 10px 12px !important;
+    gap: 10px !important;
+  }
+
+  .stat-icon {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 1.1rem !important;
+  }
+
+  .stat-value {
+    font-size: 1.1rem !important;
+  }
+
+  .admin-tabs-container {
+    padding: 0 14px !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+  }
+
+  .admin-tabs-container::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .admin-tab-btn {
+    padding: 12px 14px !important;
+    font-size: 0.82rem !important;
+    white-space: nowrap !important;
+  }
+
+  .admin-main {
+    padding: 0 14px !important;
+    margin: 16px auto !important;
+  }
+
+  .admin-search-box {
+    max-width: 100% !important;
+  }
+
+  .chip-group {
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    flex-wrap: nowrap !important;
+    padding-bottom: 4px !important;
+    scrollbar-width: none !important;
+  }
+
+  .chip-group::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .admin-inventory-card {
+    padding: 12px !important;
+    gap: 10px !important;
+  }
+
+  .details-hero-box {
+    height: 140px !important;
+  }
+}
+
 @media (max-width: 500px) {
   .phone-app-container { max-width: 100%; box-shadow: none; }
   .admin-dishes-list { grid-template-columns: 1fr !important; }
   .form-grid-2 { grid-template-columns: 1fr; }
   .modal-card { width: 96% !important; max-height: 88vh !important; }
-  .details-hero-box { height: 180px !important; }
+  .details-hero-box { height: 135px !important; }
 }
